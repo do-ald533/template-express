@@ -9,6 +9,14 @@
 			"nodeGypDependencies": true,
 			"version": "lts",
 			"nvmVersion": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"installDockerComposeSwitch": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "latest"
 		}
 	},
 
@@ -19,7 +27,18 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pnpm i"
+	"postCreateCommand": "pnpm i",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"dbaeumer.vscode-eslint",
+				"GitHub.vscode-pull-request-github",
+				"esbenp.prettier-vscode",
+				"Prisma.prisma"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
