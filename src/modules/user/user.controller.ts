@@ -11,14 +11,16 @@ import {
 import { Service } from "typedi";
 import { CreatorService } from "./services";
 import { CreateUserDto } from "./dtos";
+import LoggerService from "../../shared/services/logger.service";
 
 @JsonController("/users")
 @Service()
 export class UserController {
-  constructor(private creatorService: CreatorService) {}
+  constructor(private creatorService: CreatorService, private logger: LoggerService) {}
   @Get()
   getAll() {
-    return ''
+    this.logger.info("teste")
+    return {message: "test"}
   }
 
   @Get("/users/:id")
