@@ -6,17 +6,19 @@ import {
   Post,
   Put,
   Delete,
+  JsonController,
 } from "routing-controllers";
-import Container, { Inject, Service } from "typedi";
-import { UserTestService } from "./services/test.service";
+import { Service } from "typedi";
+import { CreatorService } from "./services";
+import { CreateUserDto } from "./dtos";
 
-@Controller("/users")
+@JsonController("/users")
 @Service()
 export class UserController {
-  constructor(public userTestService: UserTestService) {}
+  constructor(private creatorService: CreatorService) {}
   @Get()
   getAll() {
-    return this.userTestService.hello();
+    return ''
   }
 
   @Get("/users/:id")
@@ -24,9 +26,9 @@ export class UserController {
     return "This action returns user #" + id;
   }
 
-  @Post("/users")
-  post(@Body() user: any) {
-    return "Saving user...";
+  @Post()
+  async post(@Body() user: CreateUserDto) {
+   return await this.creatorService.create(user)
   }
 
   @Put("/users/:id")

@@ -2,7 +2,7 @@
   "name": "template-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/src/main.js",
   "scripts": {
     "dev": "concurrently \"pnpm run watch-compile\" \"pnpm run watch-dev\"",
     "watch-compile": "swc src -w --out-dir dist",
@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "5.10.2",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
